@@ -1,299 +1,513 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Para Mamá 💖</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Para Mamá 💖</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
+<style>
 
-    body{
-      min-height:100vh;
-      overflow-x:hidden;
-      font-family:'Poppins',sans-serif;
-      background:
-      radial-gradient(circle at top left,#ffb3d9 0%,transparent 30%),
-      radial-gradient(circle at bottom right,#ffd6ec 0%,transparent 35%),
-      linear-gradient(135deg,#130018,#220033,#3a005f);
-      color:white;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      position:relative;
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-    /* Fondo animado */
+body{
+  min-height:100vh;
+  overflow-x:hidden;
+  font-family:'Poppins',sans-serif;
+  background:
+  radial-gradient(circle at top,#ff7eb3 0%,transparent 25%),
+  linear-gradient(135deg,#12001d,#250040,#3d0066,#1a002b);
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+}
 
-    .stars{
-      position:fixed;
-      inset:0;
-      overflow:hidden;
-      z-index:0;
-    }
+/* Fondo estrellas */
 
-    .star{
-      position:absolute;
-      width:3px;
-      height:3px;
-      background:white;
-      border-radius:50%;
-      opacity:.7;
-      animation:twinkle 4s infinite ease-in-out;
-    }
+.stars{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  z-index:0;
+}
 
-    @keyframes twinkle{
-      0%,100%{
-        opacity:.2;
-        transform:scale(1);
-      }
-      50%{
-        opacity:1;
-        transform:scale(2);
-      }
-    }
+.star{
+  position:absolute;
+  width:2px;
+  height:2px;
+  background:white;
+  border-radius:50%;
+  animation:twinkle 5s infinite ease-in-out;
+}
 
-    /* Corazones */
+@keyframes twinkle{
+  0%,100%{
+    opacity:.2;
+    transform:scale(1);
+  }
+  50%{
+    opacity:1;
+    transform:scale(2);
+  }
+}
 
-    .heart{
-      position:absolute;
-      color:#ff6fae;
-      font-size:20px;
-      animation:float 10s linear infinite;
-      opacity:.5;
-    }
+/* Partículas */
 
-    @keyframes float{
-      from{
-        transform:translateY(110vh) rotate(0deg);
-      }
-      to{
-        transform:translateY(-120vh) rotate(360deg);
-      }
-    }
+.particle{
+  position:absolute;
+  pointer-events:none;
+  animation:particleFloat 5s linear forwards;
+  font-size:20px;
+}
 
-    /* Tarjeta principal */
+@keyframes particleFloat{
+  0%{
+    transform:translateY(0) scale(1);
+    opacity:1;
+  }
+  100%{
+    transform:translateY(-200px) scale(0);
+    opacity:0;
+  }
+}
 
-    .card{
-      position:relative;
-      z-index:2;
-      width:90%;
-      max-width:900px;
-      padding:60px;
-      border-radius:35px;
-      background:rgba(255,255,255,.08);
-      backdrop-filter:blur(18px);
-      border:1px solid rgba(255,255,255,.15);
-      box-shadow:
-      0 0 40px rgba(255,105,180,.25),
-      0 0 120px rgba(255,255,255,.05);
-      overflow:hidden;
-    }
+/* Tarjeta */
 
-    .shine{
-      position:absolute;
-      inset:-200%;
-      background:linear-gradient(
-      120deg,
-      transparent 30%,
-      rgba(255,255,255,.18) 50%,
-      transparent 70%);
-      animation:shine 7s linear infinite;
-    }
+.card{
+  width:90%;
+  max-width:1000px;
+  padding:60px;
+  border-radius:35px;
+  position:relative;
+  z-index:2;
 
-    @keyframes shine{
-      to{
-        transform:translateX(100%);
-      }
-    }
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(18px);
 
-    .title{
-      font-family:'Great Vibes',cursive;
-      font-size:5rem;
-      text-align:center;
-      margin-bottom:10px;
-      background:linear-gradient(90deg,#fff,#ffd1e8,#ffffff);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      animation:glow 3s ease-in-out infinite alternate;
-    }
+  border:1px solid rgba(255,255,255,.12);
 
-    @keyframes glow{
-      from{
-        text-shadow:0 0 10px rgba(255,255,255,.2);
-      }
-      to{
-        text-shadow:
-        0 0 20px rgba(255,255,255,.7),
-        0 0 40px rgba(255,105,180,.7);
-      }
-    }
+  box-shadow:
+  0 0 40px rgba(255,105,180,.3),
+  0 0 100px rgba(255,255,255,.08);
 
-    .subtitle{
-      text-align:center;
-      font-size:1.2rem;
-      opacity:.85;
-      margin-bottom:45px;
-    }
+  overflow:hidden;
 
-    .message{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:30px;
-    }
+  animation:fadeUp 1.4s ease;
+}
 
-    .box{
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.08);
-      padding:30px;
-      border-radius:25px;
-      transition:.4s;
-      position:relative;
-      overflow:hidden;
-    }
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(60px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
 
-    .box::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(
-      135deg,
-      rgba(255,255,255,.08),
-      transparent);
-      opacity:0;
-      transition:.5s;
-    }
+/* Brillo */
 
-    .box:hover{
-      transform:translateY(-10px) scale(1.02);
-      box-shadow:0 15px 35px rgba(255,105,180,.25);
-    }
+.shine{
+  position:absolute;
+  inset:-200%;
+  background:
+  linear-gradient(
+    120deg,
+    transparent 35%,
+    rgba(255,255,255,.18) 50%,
+    transparent 65%
+  );
+  animation:shine 8s linear infinite;
+}
 
-    .box:hover::before{
-      opacity:1;
-    }
+@keyframes shine{
+  to{
+    transform:translateX(100%);
+  }
+}
 
-    .box h2{
-      margin-bottom:15px;
-      font-size:1.5rem;
-      color:#ffd6ea;
-    }
+.title{
+  font-family:'Great Vibes',cursive;
+  font-size:6rem;
+  text-align:center;
+  margin-bottom:10px;
 
-    .box p{
-      line-height:1.8;
-      opacity:.92;
-    }
+  background:linear-gradient(90deg,#fff,#ffd1e8,#ffffff);
 
-    .footer{
-      margin-top:45px;
-      text-align:center;
-      font-size:1.2rem;
-      opacity:.9;
-    }
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 
-    .signature{
-      margin-top:15px;
-      font-family:'Great Vibes',cursive;
-      font-size:3rem;
-      color:#ffd6ea;
-    }
+  animation:glow 3s ease-in-out infinite alternate;
+}
 
-    /* Responsive */
+@keyframes glow{
+  from{
+    text-shadow:0 0 10px rgba(255,255,255,.2);
+  }
+  to{
+    text-shadow:
+    0 0 20px rgba(255,255,255,.8),
+    0 0 50px rgba(255,105,180,.9);
+  }
+}
 
-    @media(max-width:768px){
+.subtitle{
+  text-align:center;
+  font-size:1.2rem;
+  opacity:.9;
+  margin-bottom:45px;
+}
 
-      .card{
-        padding:35px 25px;
-      }
+/* Grid */
 
-      .title{
-        font-size:3.5rem;
-      }
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+}
 
-      .message{
-        grid-template-columns:1fr;
-      }
+/* Caja */
 
-    }
-  </style>
+.box{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:25px;
+  padding:30px;
+  position:relative;
+  overflow:hidden;
+  transition:.5s;
+  cursor:pointer;
+}
+
+.box:hover{
+  transform:translateY(-10px) scale(1.03);
+  box-shadow:0 20px 40px rgba(255,105,180,.25);
+}
+
+.box::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+  135deg,
+  rgba(255,255,255,.12),
+  transparent);
+  opacity:0;
+  transition:.5s;
+}
+
+.box:hover::before{
+  opacity:1;
+}
+
+.box h2{
+  margin-bottom:15px;
+  color:#ffd6ea;
+  font-size:1.6rem;
+}
+
+.box p{
+  line-height:1.8;
+  opacity:.92;
+}
+
+/* Botón sorpresa */
+
+.surprise-btn{
+  margin-top:40px;
+  width:100%;
+  border:none;
+  padding:20px;
+  border-radius:20px;
+  font-size:1.1rem;
+  font-weight:600;
+  cursor:pointer;
+
+  background:linear-gradient(90deg,#ff4f9a,#ff80bf);
+
+  color:white;
+
+  transition:.4s;
+
+  box-shadow:
+  0 0 20px rgba(255,105,180,.4);
+}
+
+.surprise-btn:hover{
+  transform:scale(1.03);
+  box-shadow:
+  0 0 40px rgba(255,105,180,.7);
+}
+
+/* Mensaje oculto */
+
+.hidden-message{
+  margin-top:35px;
+  max-height:0;
+  overflow:hidden;
+  transition:1s ease;
+}
+
+.hidden-message.show{
+  max-height:500px;
+}
+
+.hidden-content{
+  background:rgba(255,255,255,.06);
+  border-radius:25px;
+  padding:35px;
+  text-align:center;
+  border:1px solid rgba(255,255,255,.1);
+  animation:appear 1s ease;
+}
+
+@keyframes appear{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.hidden-content h2{
+  font-size:2rem;
+  margin-bottom:20px;
+  color:#ffd6ea;
+}
+
+.hidden-content p{
+  line-height:1.9;
+  font-size:1.05rem;
+}
+
+/* Firma */
+
+.signature{
+  margin-top:30px;
+  font-family:'Great Vibes',cursive;
+  font-size:3rem;
+  color:#ffd6ea;
+}
+
+/* Contador */
+
+.counter{
+  margin-top:40px;
+  text-align:center;
+  font-size:1.1rem;
+  opacity:.9;
+}
+
+.days{
+  font-size:3rem;
+  font-weight:700;
+  color:#ffd6ea;
+  margin-top:10px;
+}
+
+/* Responsive */
+
+@media(max-width:850px){
+
+  .title{
+    font-size:4rem;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .card{
+    padding:35px 25px;
+  }
+
+}
+
+</style>
 </head>
 <body>
 
-  <div class="stars"></div>
+<div class="stars"></div>
 
-  <div class="heart" style="left:10%; animation-delay:0s;">❤</div>
-  <div class="heart" style="left:25%; animation-delay:2s;">❤</div>
-  <div class="heart" style="left:40%; animation-delay:5s;">❤</div>
-  <div class="heart" style="left:55%; animation-delay:1s;">❤</div>
-  <div class="heart" style="left:70%; animation-delay:4s;">❤</div>
-  <div class="heart" style="left:85%; animation-delay:7s;">❤</div>
+<div class="card">
 
-  <div class="card">
+  <div class="shine"></div>
 
-    <div class="shine"></div>
+  <h1 class="title">Feliz Día Mamá</h1>
 
-    <h1 class="title">Feliz Día Mamá</h1>
+  <p class="subtitle">
+    Toca las tarjetas, mueve el mouse y presiona el botón sorpresa 💖
+  </p>
 
-    <p class="subtitle">
-      Gracias por estar siempre incluso cuando el mundo se pone difícil 💖
-    </p>
+  <div class="grid">
 
-    <div class="message">
-
-      <div class="box">
-        <h2>🌸 Gracias por todo</h2>
-        <p>
-          Gracias por cada consejo, cada abrazo, cada desvelo y cada momento
-          en el que me ayudaste sin esperar nada a cambio.
-          Eres una de las personas más importantes de mi vida y nunca voy
-          a dejar de valorar todo lo que haces por mí.
-        </p>
-      </div>
-
-      <div class="box">
-        <h2>✨ Eres increíble</h2>
-        <p>
-          Tu fuerza, tu paciencia y tu amor hacen que todo sea mejor.
-          Aunque a veces no lo diga mucho, admiro muchísimo la mujer
-          que eres y me siento orgulloso de tenerte como mamá.
-        </p>
-      </div>
-
+    <div class="box">
+      <h2>🌸 Gracias por todo</h2>
+      <p>
+        Mami, realmente tanto el Día de la Madre como el Día de la Mujer
+        son todos los días, pero nunca dejan de ser fechas muy especiales.
+        Quiero que tengas en cuenta cuánto te amo, aprecio y respeto.
+      </p>
     </div>
 
-    <div class="footer">
-      Te quiero muchísimo 💕
-      <div class="signature">
-        — Tu hijo
-      </div>
+    <div class="box">
+      <h2>✨ Siempre voy a intentarlo</h2>
+      <p>
+        Sé que el labor como madre no es para nada fácil,
+        pero intento siempre dar lo mejor de mí para que te sientas orgullosa.
+        Y aunque no siempre lo logre, lo único que yo quiero en esta vida
+        es verte feliz y alegre.
+      </p>
     </div>
 
   </div>
 
-  <script>
-    const stars = document.querySelector('.stars');
+  <button class="surprise-btn" onclick="showMessage()">
+    💌 Presiona aquí para abrir tu sorpresa
+  </button>
 
-    for(let i = 0; i < 120; i++){
+  <div class="hidden-message" id="hiddenMessage">
 
-      const star = document.createElement('div');
-      star.classList.add('star');
+    <div class="hidden-content">
 
-      star.style.left = Math.random() * 100 + 'vw';
-      star.style.top = Math.random() * 100 + 'vh';
+      <h2>💖 Para la mejor mamá del mundo 💖</h2>
 
-      star.style.animationDelay = Math.random() * 5 + 's';
-      star.style.animationDuration = 2 + Math.random() * 5 + 's';
+      <p>
+        Voy a hacer todo lo posible por lograr verte sonriendo siempre,
+        porque no existe nada más importante para mí que tu felicidad.
+        Gracias por absolutamente todo lo que haces cada día,
+        incluso esas cosas que muchas veces no digo.
+      </p>
 
-      stars.appendChild(star);
-    }
-  </script>
+      <p style="margin-top:20px;">
+        Te amo muchísimo 💕
+      </p>
+
+      <div class="signature">
+        — Tu hijo 💖
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="counter">
+    Llevo exactamente...
+    <div class="days" id="days"></div>
+    días teniendo a la mejor mamá 💖
+  </div>
+
+</div>
+
+<script>
+
+/* Estrellas */
+
+const stars = document.querySelector('.stars');
+
+for(let i = 0; i < 150; i++){
+
+  const star = document.createElement('div');
+
+  star.classList.add('star');
+
+  star.style.left = Math.random()*100 + 'vw';
+  star.style.top = Math.random()*100 + 'vh';
+
+  star.style.animationDelay = Math.random()*5 + 's';
+  star.style.animationDuration = 2 + Math.random()*5 + 's';
+
+  stars.appendChild(star);
+}
+
+/* Sorpresa */
+
+function showMessage(){
+
+  document.getElementById('hiddenMessage')
+  .classList.toggle('show');
+
+  createExplosion();
+}
+
+/* Explosión de corazones */
+
+function createExplosion(){
+
+  for(let i=0; i<40; i++){
+
+    const particle = document.createElement('div');
+
+    particle.classList.add('particle');
+
+    particle.innerHTML = ['💖','✨','💕','🌸'][Math.floor(Math.random()*4)];
+
+    particle.style.left = (window.innerWidth/2 + (Math.random()*300-150)) + 'px';
+    particle.style.top = (window.innerHeight/2 + (Math.random()*100-50)) + 'px';
+
+    particle.style.fontSize = (15 + Math.random()*25) + 'px';
+
+    document.body.appendChild(particle);
+
+    setTimeout(()=>{
+      particle.remove();
+    },5000);
+
+  }
+
+}
+
+/* Contador */
+
+const birth = new Date("2009-05-01");
+const today = new Date();
+
+const diff = today - birth;
+
+const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+document.getElementById('days').innerHTML = days;
+
+/* Mouse interactivo */
+
+document.addEventListener('mousemove',(e)=>{
+
+  if(Math.random() > 0.92){
+
+    const particle = document.createElement('div');
+
+    particle.classList.add('particle');
+
+    particle.innerHTML = '💖';
+
+    particle.style.left = e.clientX + 'px';
+    particle.style.top = e.clientY + 'px';
+
+    particle.style.fontSize = (10 + Math.random()*20) + 'px';
+
+    document.body.appendChild(particle);
+
+    setTimeout(()=>{
+      particle.remove();
+    },4000);
+
+  }
+
+});
+
+</script>
 
 </body>
 </html>
